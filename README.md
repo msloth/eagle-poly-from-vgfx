@@ -37,6 +37,8 @@ Nothing specific really. Python. Someway of running the script:
 
 ## Instructions ##
 
+### Prepare the SVG ###
+
 Instructions on how to prepare the SVG before running the script. The reason we do this is that we can't handle curves or hollow shapes, so we convert everything to linear paths with plenty of nodes, and split up any hollow shapes.
 This is adapted from the inspiration to this script: https://github.com/cmonr/Eagle-ULPs.
 
@@ -49,13 +51,60 @@ This is adapted from the inspiration to this script: https://github.com/cmonr/Ea
 * Extensions > Modify Path > Add Nodes (Default settings are alright)
 * Extensions > Modify Path > Flatten Beziers (Default settings are alright)
 * For the closed loop letters O,o,D,d,etc...
-- Draw a rectangle dividing the letter ( O => ([)] )
-- Select the rectangle and the letter
-- Ctrl-/ (Division)
-- Repeat with all closed letters
-- Select all (w/ Node Cursor)
+  * Draw a rectangle dividing the letter ( O => ([)] )
+  * Select the rectangle and the letter
+  * Ctrl-/ (Division)
+  * Repeat with all closed letters
+  * Select all (w/ Node Cursor)
 * Ctrl-Shift-K (Break Apart) <- important step
 * Save As > Plain SVG
+
+
+### Use the script ###
+
+basic usage
+`bash
+py eagle-poly-from-vgfx.py filename.svg
+`
+
+#### options ####
+
+`
+Optional switches:
+   -mxy == mirror the image in x ('-mx'), y ('-my'), or xy ('-mxy') axis, (not yet implemented)
+   -nNAME == name the polygon NAME, eg -nGND for ground fill. Default VCC.
+   -b == do /not/ draw a bounding box, that would indicate the min/max of the generated image. Very helpful, thus is default
+   -sx,y == maxsize x, y mm, eg -s100,20.5. Default 100/50.
+   -ox,y == origin at x, y mm. Default 0/0
+   -rD == rotate by D degrees
+   -px == custom scale X, useful for making sure a figure is scaled as a previously parsed one
+   -la,b,c,... == output on layers a, b, c, ..., eg -lTop,tStop,Bottom,bStop
+   -d == turn on debug output
+   -uX == use unit X (mm, mil, in). Default is mm
+`
+
+The defaults are: origin at (0,0), size max 100*50 mm, bounding box on, polygon name VCC.
+
+#### examples ####
+
+Here follows a number of examples, try it out against the Johnny Mnemonic test image if you like.
+
+Max size 100*20 mm, origin at (25,25) mm, don't draw a bounding box, and save to out.scr.
+
+`bash
+py eagle-poly-from-vgfx.py jmne-inv.svg -b -s100,20 -o25,25 > out.scr
+`
+
+Same, but also rotate it 20 degrees.
+
+`bash
+py eagle-poly-from-vgfx.py jmne-inv.svg -b -s100,20 -o25,25 -r20 > out.scr
+`
+
+### Import to Eagle ###
+
+* In Eagle, enter PCB design mode, where you design the physical layout of the board.
+* In the menues, select `Run user script...` and point to the script you just created
 
 ## Todo ##
 
