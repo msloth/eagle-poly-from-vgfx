@@ -63,6 +63,7 @@ def die(diestr = "", exitcode = 1, show_howto = True):
     print("     -la,b,c,... == output on layers a, b, c, ..., eg -lTop,tStop,Bottom,bStop")
     print("     -d == turn on debug output")
     print("     -uX == use unit X (mm, mil, in). Default is mm")
+    print("The defaults are: origin at (0,0), size max 100*50 mm, bounding box on, name VCC")
     print
     print("*** Error ***: " + diestr)
   else:
