@@ -2,7 +2,7 @@
 
 _Tool for creating Cadsoft Eagle polygons from vector graphics._
 
-![Example PCB](https://github.com/msloth/eagle-poly-from-vgfx/blob/master/example/jmne-pcb.jpg)
+![Example PCB](https://raw.github.com/msloth/eagle-poly-from-vgfx/master/example/jmne-pcb.jpg)
 
 This tool allows you to create polygons in the Cadsoft Eagle PCB
 design software. These polygons can be placed on silkscreen or
