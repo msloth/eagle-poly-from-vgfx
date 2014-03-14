@@ -2,6 +2,8 @@
 
 _Tool for creating Cadsoft Eagle polygons from vector graphics._
 
+![Example PCB](https://github.com/msloth/eagle-poly-from-vgfx/blob/master/example/jmne-pcb.jpg)
+
 This tool allows you to create polygons in the Cadsoft Eagle PCB
 design software. These polygons can be placed on silkscreen or
 copper layer, or just any layer, and be named whatever.
@@ -63,13 +65,13 @@ This is adapted from the inspiration to this script: https://github.com/cmonr/Ea
 ### Use the script ###
 
 basic usage
-`bash
+```
 py eagle-poly-from-vgfx.py filename.svg
-`
+```
 
 #### options ####
 
-`
+```
 Optional switches:
    -mxy == mirror the image in x ('-mx'), y ('-my'), or xy ('-mxy') axis, (not yet implemented)
    -nNAME == name the polygon NAME, eg -nGND for ground fill. Default VCC.
@@ -81,7 +83,7 @@ Optional switches:
    -la,b,c,... == output on layers a, b, c, ..., eg -lTop,tStop,Bottom,bStop
    -d == turn on debug output
    -uX == use unit X (mm, mil, in). Default is mm
-`
+```
 
 The defaults are: origin at (0,0), size max 100*50 mm, bounding box on, polygon name VCC.
 
@@ -91,15 +93,15 @@ Here follows a number of examples, try it out against the Johnny Mnemonic test i
 
 Max size 100*20 mm, origin at (25,25) mm, don't draw a bounding box, and save to out.scr.
 
-`bash
+```
 py eagle-poly-from-vgfx.py jmne-inv.svg -b -s100,20 -o25,25 > out.scr
-`
+```
 
 Same, but also rotate it 20 degrees.
 
-`bash
+```
 py eagle-poly-from-vgfx.py jmne-inv.svg -b -s100,20 -o25,25 -r20 > out.scr
-`
+```
 
 ### Import to Eagle ###
 
